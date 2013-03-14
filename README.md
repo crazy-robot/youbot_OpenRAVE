@@ -1,9 +1,9 @@
 youbot_OpenRAVE
 ===============
 
-Kinematic Analysis of youBot using OpenRAVE
 Please check for the media folder in order to get a feel on how useful the results can be utilized
 
+Kinematic Analysis of youBot using OpenRAVE
 
 IK Test Results: (Performed over 100 positions)
 ----------------------------------------------
