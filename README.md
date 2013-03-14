@@ -2,6 +2,7 @@ youbot_OpenRAVE
 ===============
 
 Please check for the media folder in order to get a feel on how useful the results can be utilized
+***.webm extension movies can be played in your firefox browser***
 
 Kinematic Analysis of youBot using OpenRAVE
 
