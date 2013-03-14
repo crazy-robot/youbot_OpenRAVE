@@ -4,6 +4,7 @@ youbot_OpenRAVE
 Kinematic Analysis of youBot using OpenRAVE
 
 IK Test Results: (Performed over 100 positions)
+----------------------------------------------
 
 Success Rate = 95%
 
@@ -13,6 +14,7 @@ No Solutions = 5%
 
 
 Convex Decomposition Parameters:
+---------------------------------
 
  'maxHullVertices': 64, 
  
