@@ -3,7 +3,7 @@ from openravepy import *
 from numpy import *
 import time
 env = Environment() # create the environment
-env.Load('../environment/youbotsimple.env.xml')
+env.Load('environment/youbotsimple.env.xml')
 env.SetViewer('qtcoin')
 robot = env.GetRobots()[0] # get the first robot
 manip = robot.SetActiveManipulator('arm') # set the manipulator to leftarm

@@ -125,7 +125,7 @@
 <Manipulator name="arm">
 	<effector>link5</effector>
         
-	<base>base</base>
+	<base>root</base>
          
 </Manipulator>
 
