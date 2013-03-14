@@ -14,6 +14,19 @@ Missing Solutions = 0.0%
 
 No Solutions = 5%
 
+Kinematic Reachability
+----------------------
+
+radius: 0.544271
+
+xyzsamples: 10488
+
+quatdelta: 0.513496
+
+rot samples: 72
+
+freespace: 0
+
 
 Convex Decomposition Parameters:
 ---------------------------------
