@@ -1,0 +1,13 @@
+
+
+
+
+[Kohli1993]	Dilip Kohli and M. Osvatic, “Inverse Kinematics of General 6R and 5R,P Serial Manipulators”, Journal of Mechanical Design, Volume 115, Issue 4, Dec 1993.
+
+Li-Woernle-Hiller procedure covered in Jorge Angeles, “Fundamentals of Robotics Mechanical Systems”, Springer, 2007.
+
+Dinesh Manocha and J.F. Canny. “Efficient inverse kinematics for general 6R manipulators”, IEEE Transactions on Robotics and Automation, Volume 10, Issue 5, Oct 1994. (Solves the IK equations using eigenvalues/eigenvectors of a 12x12 quadratic eigenvalue problem)
+
+[Raghavan1993]	M Raghavan and B Roth, “Inverse Kinematics of the General 6R Manipulator and related Linkages”, Journal of Mechanical Design, Volume 115, Issue 3, 1993.
+
+

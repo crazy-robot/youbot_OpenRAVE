@@ -1,0 +1,90 @@
+<robot>
+<KinBody name="robot_base">
+<Body name="chasis" type="dynamic">
+         <translation>0 0 0</translation>
+	<Geom type="box" modifiable="true">
+        	<extents>0.25 0.1 0.005</extents>
+        </Geom>
+       <Mass type="mimicgeom">
+      	<total>0.4</total>
+    </Mass>
+</Body>
+
+<Body name="wheelfr" type="dynamic">
+         <translation>-0.25 0.1 -0.055</translation>
+	<Geom type="sphere" modifiable="true">
+        	<radius>0.05</radius>
+        </Geom>
+       <Mass type="mimicgeom">
+      	<total>0.4</total>
+    </Mass>
+</Body>
+<Body name="wheelfl" type="dynamic">
+         <translation>0.25 -0.1 -0.055</translation>
+	<Geom type="sphere" modifiable="true">
+        	<radius>0.05</radius>
+        </Geom>
+       <Mass type="mimicgeom">
+      	<total>0.4</total>
+    </Mass>
+</Body>
+<Body name="wheelbr" type="dynamic">
+         <translation>-0.25 -0.1 -0.055</translation>
+	<Geom type="sphere" modifiable="true">
+        	<radius>0.05</radius>
+        </Geom>
+       <Mass type="mimicgeom">
+      	<total>0.4</total>
+    </Mass>
+</Body>
+<Body name="wheelbl" type="dynamic">
+         <translation>0.25 0.1 -0.055</translation>
+	<Geom type="sphere" modifiable="true">
+        	<radius>0.05</radius>
+        </Geom>
+       <Mass type="mimicgeom">
+      	<total>0.4</total>
+    </Mass>
+</Body>
+<Joint circular="true" name="j0" type="hinge">
+	<Body>chasis</Body>
+	<Body>wheelfr</Body>
+	<offsetfrom>wheelfr</offsetfrom>
+        <anchor>0 0 0</anchor>
+	<axis>0 1 0</axis>
+	
+	<maxvel>3</maxvel>
+	<resolution>1</resolution>
+</Joint>
+<Joint circular="true" name="j1" type="hinge">
+	<Body>chasis</Body>
+	<Body>wheelfl</Body>
+	<offsetfrom>wheelfl</offsetfrom>
+        <anchor>0 0 0</anchor>
+	<axis>0 1 0</axis>
+	
+	<maxvel>3</maxvel>
+	<resolution>1</resolution>
+</Joint>
+<Joint circular="true" name="j2" type="hinge">
+	<Body>chasis</Body>
+	<Body>wheelbr</Body>
+	<offsetfrom>wheelbr</offsetfrom>
+        <anchor>0 0 0</anchor>
+	<axis>0 1 0</axis>
+	<limitsdeg>-170 170</limitsdeg>
+	<maxvel>3</maxvel>
+	<resolution>1</resolution>
+</Joint>
+<Joint circular="true" name="j3" type="hinge">
+	<Body>chasis</Body>
+	<Body>wheelbl</Body>
+	<offsetfrom>wheelbl</offsetfrom>
+        <anchor>0 0 0</anchor>
+	<axis>0 1 0</axis>
+	<limitsdeg>-170 170</limitsdeg>
+	<maxvel>3</maxvel>
+	<resolution>1</resolution>
+</Joint>
+</KinBody>
+</robot>
