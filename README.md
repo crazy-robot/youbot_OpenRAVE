@@ -9,11 +9,11 @@ Kinematic Analysis of youBot using OpenRAVE
 IK Test Results: (Performed over 100 positions)
 ----------------------------------------------
 
-Success Rate = 95%
+Success Rate = 98%
 
-Missing Solutions = 0.0%
+Missing Solutions = 0.02%
 
-No Solutions = 5%
+No Solutions = 0.02%
 
 Kinematic Reachability
 ----------------------
