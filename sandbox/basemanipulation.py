@@ -25,38 +25,37 @@ def main():
     time.sleep(0.1)
 
 #create convex decomposition
-    #cdmodel = databases.convexdecomposition.ConvexDecompositionModel(robot)
-   # if not cdmodel.load():
-       # cdmodel.autogenerate()
+    cdmodel = databases.convexdecomposition.ConvexDecompositionModel(robot)
+    if not cdmodel.load():
+        cdmodel.autogenerate()
    
 
     basemanip = interfaces.BaseManipulation(robot)
 
-    target = env.GetKinBody('TibitsBox1')
-    print target    
-    goal = [-2.49138767,1.64301229,1.57298522] #in x,y and angle for 2D plane
+    #target = env.GetKinBody('TibitsBox1')
+    #print target    
+    #goal = [-2.49138767,1.64301229,1.57298522] #in x,y and angle for 2D plane
     
     print 'move robot base to target'
     with env:
          robot.SetAffineTranslationMaxVels([0.5,0.5,0.5])
          robot.SetAffineRotationAxisMaxVels(ones(4))
          robot.SetActiveDOFs([],Robot.DOFAffine.X|Robot.DOFAffine.Y|Robot.DOFAffine.RotationAxis,[0,0,1])
-    
-         #with robot:
-          #  robot.SetActiveDOFValues(goal) 
-           # check = env.CheckCollision(robot)
-            #print check
          robot.GetActiveDOF()
-    #robot.SetActiveDOFs([],Robot.DOFAffine.X|Robot.DOFAffine.Y|Robot.DOFAffine.RotationAxis,[0,0,1])
-         basemanip.MoveActiveJoints(goal=[3.4,-0.7,0],maxiter=3000,steplength=0.1,maxtries=1)
-    #robot.SetActiveDOFValues(goal)
-    waitrobot(robot)
+         basemanip.MoveActiveJoints(goal=[1.52861547,-1.0378703,0.35538285],maxiter=3000,steplength=0.15,maxtries=1)
+         waitrobot(robot)
+         basemanip.MoveActiveJoints(goal=[0,0,0],maxiter=3000,steplength=0.15,maxtries=1)
+         waitrobot(robot)
+         #basemanip.MoveActiveJoints(goal=[0,0,0],maxiter=3000,steplength=0.15,maxtries=1)
+         #waitrobot(robot)
 
 #from optparse import OptionParser
 #from openravepy import OpenRAVEGlobalArguments, with_destroy
 #@with_destroy
 def run(args=None):
     main()
+    while True:
+        a =1
     
 if __name__ == "__main__":
     run() 
