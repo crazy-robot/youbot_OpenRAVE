@@ -20,7 +20,7 @@ def main():
     env.Load('../environment/youbot_base_manipulation.env.xml')
     robot = env.GetRobots()[0]
 
-    
+    count = 1
     env.UpdatePublishedBodies()
     time.sleep(0.1)
 
@@ -39,6 +39,7 @@ def main():
     print 'move robot base to target'
     
     while True:
+        count = count +1
         with env:
              robot.SetAffineTranslationMaxVels([0.5,0.5,0.5])
              robot.SetAffineRotationAxisMaxVels(ones(4))
@@ -49,6 +50,9 @@ def main():
                 print "Goal in collision"
              basemanip.MoveActiveJoints(goal=goal,maxiter=3000,steplength=0.1)
         robot.WaitForController(0)
+        if count >2 :
+            break
+
         goal = [0,0,0]
     
              #basemanip.MoveActiveJoints(goal=[0,0,0],maxiter=3000,steplength=0.1)
