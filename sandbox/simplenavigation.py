@@ -49,6 +49,9 @@ class SimpleNavigationPlanning:
             envmin = numpy.min(array(envmin),0)+abrobot.extents()
             envmax = numpy.max(array(envmax),0)-abrobot.extents()
         bounds = array(((envmin[0],envmin[1],-pi),(envmax[0],envmax[1],pi)))
+	t = self.env.GetBodies()[1]
+	g = array([[ 0.53320741,  0.71557224, -0.45127179,  3.20530494], [-0.80691723,  0.59041347, -0.01721968, -0.9592293 ],[ 0.25411502,  0.37332064,0.89222041,  0.48222358],[ 0, 0, 0,  1]])	
+	t.SetTransform(g)
         while True:
             with self.env:
                 self.robot.SetAffineTranslationLimits(envmin,envmax)
@@ -85,8 +88,8 @@ class SimpleNavigationPlanning:
                     lower,upper = self.robot.GetDOFLimits(manip.GetArmIndices())
                     a = lower+random.rand(len(lower))*(upper-lower)
                     self.robot.SetDOFValues(a,manip.GetArmIndices())
-                    ikparam = manip.GetIkParameterization(IkParameterization.Type.TranslationDirection5D)
-                    sols = manip.FindIKSolutions(ikparam,IkFilterOptions.CheckEnvCollisions)
+                    ikparam =  IkParameterization('1442840583 -0.5335666042260692 0.8069032587497339 -0.2534044393330962 3.125495570275616 -1.007323359687846 0.4969689507536642 ')
+                    sols = manip.FindIKSolutions(ikparam,IkFilterOptions.IgnoreCustomFilters)
                     Tee = manip.GetEndEffectorTransform()
                     for i in range(0,sols.shape[0]):
                         with self.robot:
