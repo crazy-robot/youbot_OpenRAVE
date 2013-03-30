@@ -101,6 +101,7 @@ class SimpleNavigationPlanning:
                             print a
                             self.robot.SetDOFValues(sols[i],manip.GetArmIndices()) 
                             self.env.UpdatePublishedBodies()
+                            time.sleep(5)
                     self.robot.Grab(t)
 		    lower,upper = self.robot.GetDOFLimits(manip.GetArmIndices())
 		    print "back to home position"

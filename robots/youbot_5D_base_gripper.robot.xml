@@ -177,7 +177,7 @@
      <!--rotationaxis>0 1 0 90</rotationaxis-->
     <joints>jg1 jg2</joints>
     <closingdirection>-1 -1</closingdirection>
-    <direction>0 0 1</direction>
+    <direction>1 0 0</direction>
     <effector>link5</effector>
 
     <base>root</base>
