@@ -174,10 +174,10 @@
 
 <Manipulator name="arm">
     <Translation>0 0.08 0</Translation>
-     <rotationaxis>0 1 0 90</rotationaxis>
+     <!--rotationaxis>0 1 0 90</rotationaxis-->
     <joints>jg1 jg2</joints>
     <closingdirection>-1 -1</closingdirection>
-    <direction>1 0 0</direction>
+    <direction>0 0 1</direction>
     <effector>link5</effector>
 
     <base>root</base>

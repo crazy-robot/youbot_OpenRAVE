@@ -102,25 +102,43 @@ class SimpleNavigationPlanning:
                             self.robot.SetDOFValues(sols[i],manip.GetArmIndices()) 
                             self.env.UpdatePublishedBodies()
                     self.robot.Grab(t)
+		    lower,upper = self.robot.GetDOFLimits(manip.GetArmIndices())
+		    print "back to home position"
+                    #a = lower+random.rand(len(lower))*(upper-lower)
+                    a = array([0,0, 0, 0,0])
+                    self.robot.SetDOFValues(a,manip.GetArmIndices())
+		    self.env.UpdatePublishedBodies()
                     #taskprob.CloseFingers()
-                    with self.robot:
-                        goal = [2.8,-1.3,0]
-                        print 'planning to: ',goal
-                        # draw the marker
-                
-                        center = r_[goal[0:2],0.2]
-                        xaxis = 0.5*array((cos(goal[2]),sin(goal[2]),0))
-                        yaxis = 0.25*array((-sin(goal[2]),cos(goal[2]),0))
-                        h = self.env.drawlinelist(transpose(c_[center-xaxis,center+xaxis,center-yaxis,center+yaxis,center+xaxis,center+0.5*xaxis+0.5*yaxis,center+xaxis,center+0.5*xaxis-0.5*yaxis]),linewidth=5.0,colors=array((0,1,0)))
-               
-                        if self.basemanip.MoveActiveJoints(goal=goal,maxiter=3000,steplength=0.1) is None:
-                            print 'retrying...'
-                            continue
-                        print 'waiting for controller'
-                        self.robot.WaitForController(0)
+		
+                    
+                        
                    
                 while True:
-                            a = 1
+                        with self.env:
+				self.robot.SetAffineTranslationLimits(envmin,envmax)
+				self.robot.SetAffineTranslationMaxVels([0.5,0.5,0.5])
+				self.robot.SetAffineRotationAxisMaxVels(ones(4))
+				self.robot.SetActiveDOFs([],DOFAffine.X|DOFAffine.Y|DOFAffine.RotationAxis,[0,0,1])
+				# pick a random position
+				with self.robot:
+		            		while True:    
+						goal = bounds[0,:]+random.rand(3)*(bounds[1,:]-bounds[0,:])
+						self.robot.SetActiveDOFValues(goal)
+						if not self.env.CheckCollision(self.robot):
+						    break
+				print 'planning to: ',goal
+		                # draw the marker
+		        
+		                center = r_[goal[0:2],0.2]
+		                xaxis = 0.5*array((cos(goal[2]),sin(goal[2]),0))
+		                yaxis = 0.25*array((-sin(goal[2]),cos(goal[2]),0))
+		                h = self.env.drawlinelist(transpose(c_[center-xaxis,center+xaxis,center-yaxis,center+yaxis,center+xaxis,center+0.5*xaxis+0.5*yaxis,center+xaxis,center+0.5*xaxis-0.5*yaxis]),linewidth=5.0,colors=array((0,1,0)))
+		       
+		                if self.basemanip.MoveActiveJoints(goal=goal,maxiter=3000,steplength=0.1) is None:
+		                    print 'retrying...'
+		                    continue
+		                print 'waiting for controller'
+		                self.robot.WaitForController(0)
 
 def main(env,options):
     "Main example code."
