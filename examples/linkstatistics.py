@@ -2,10 +2,10 @@ from openravepy import *
 import time
 env = Environment() # create the environment
 env.SetViewer('qtcoin') # start the viewer
-env.Load('data/pr2test1.env.xml') # load a scene
+env.Load('../environment/youbot_move.env.xml') # load a scene
 robot = env.GetRobots()[0] # get the first robot
-robot.SetActiveManipulator('leftarm_torso')
-goal = [ 0.24865706, 0.09362862, 0, 2.21558089, -1.00901245, -1.18879056, -0.74486442, 0]
+robot.SetActiveManipulator('arm')
+goal = [0,1.5,1.5,-2,0]
 
 # normal planning
 manipprob = interfaces.BaseManipulation(robot) # create the interface for basic manipulation programs
@@ -25,4 +25,6 @@ traj=manipprob.MoveManipulator(goal=goal,execute=False,outputtrajobj=True)
 raveLogInfo('linkstatistics planning time: %fs'%(time.time()-starttime))
 robot.GetController().SetPath(traj)
 robot.WaitForController(0)
+#while True:
+#	a =1
 

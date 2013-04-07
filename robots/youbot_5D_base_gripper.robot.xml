@@ -170,6 +170,13 @@
 	<maxvel>3</maxvel>
 	<resolution>1</resolution>
 </Joint>
+<adjacent>base link2</adjacent>
+<adjacent>link3 link4</adjacent> 
+<adjacent>link2 link3</adjacent> 
+<adjacent>link2 link1</adjacent>
+<adjacent>link4 link5</adjacent>
+<adjacent>link5 palm</adjacent>  
+<adjacent>base link2 link1 link3 link4 link5 palm leftgripper rightgripper</adjacent>
 </KinBody>
 
 <Manipulator name="arm">

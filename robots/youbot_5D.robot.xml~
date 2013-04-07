@@ -174,11 +174,11 @@
 </KinBody>
 
 <Manipulator name="arm">
-        <Translation>0 0.075 0.127</Translation>
+        <Translation>0 0.075 0</Translation>
          <!--rotationaxis>1 0 0 -90</rotationaxis-->
 	<effector>link5</effector>
         
-	<base>root</base>
+	<base>base</base>
          
 </Manipulator>
 

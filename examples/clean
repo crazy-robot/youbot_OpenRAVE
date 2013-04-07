@@ -1,1 +1,2 @@
 rm -rf *.hdf5
+rm -rf *~
