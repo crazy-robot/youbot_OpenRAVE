@@ -1,0 +1,12 @@
+<Robot>
+ <robot file="filename.dae"></robot>
+ <!--Specifying the manipulator structure-->
+ <Manipulator name="arm">
+   <effector>sdh_palm_link</effector>
+   <base>base_link</base>
+   <joints>sdh_finger_22_joint sdh_finger_22_joint sdh_finger_23_joint sdh_knuckle_joint sdh_finger_12_joint sdh_finger_13_joint
+sdh_thumb_2_joint sdh_thumb_3_joint</joints>
+    <closingdirection>1 1 1 1 1 1 1 1</closingdirection>
+    <direction>0 0 1</direction>
+  </Manipulator>
+</Robot>

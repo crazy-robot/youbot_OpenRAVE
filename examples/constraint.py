@@ -64,12 +64,12 @@ class ConstraintPlanning:
         self.envreal = robot.GetEnv()
         self.robot = robot
         self.manip = self.robot.GetActiveManipulator()
-        self.ikmodel = databases.inversekinematics.InverseKinematicsModel(robot=robot,iktype=IkParameterization.Type.TranslationDirection5D)
+        self.ikmodel = databases.inversekinematics.InverseKinematicsModel(robot=robot,iktype=IkParameterization.Type.Transform6D)
         if not self.ikmodel.load():
             self.ikmodel.autogenerate()
-        self.gmodel = databases.grasping.GraspingModel(robot=self.robot,target=self.envreal.GetKinBody('doorhandle'))
-        #if not self.gmodel.load():
-        self.gmodel.autogenerate()
+        self.gmodel = databases.grasping.GraspingModel(robot=self.robot,target=self.envreal.GetKinBody('target'))
+        if not self.gmodel.load():
+            self.gmodel.autogenerate()
         self.basemanip = interfaces.BaseManipulation(self.robot,plannername=plannername)
         self.taskmanip = interfaces.TaskManipulation(self.robot,graspername=self.gmodel.grasper.plannername,plannername=plannername)
 
@@ -169,7 +169,7 @@ def run(args=None):
     parser = OptionParser(description='RRT motion planning with constraints on the robot end effector.')
     OpenRAVEGlobalArguments.addOptions(parser)
     parser.add_option('--scene',
-                      action="store",type='string',dest='scene',default='../environment/youbot_door.env.xml',
+                      action="store",type='string',dest='scene',default='/home/student/rnd2/devel/ros_stacks/sandbox/urdf_collada/bin/lab1.env.xml',
                       help='Scene file to load (default=%default)')
     (options, leftargs) = parser.parse_args(args=args)
     OpenRAVEGlobalArguments.parseAndCreateThreadedUser(options,main,defaultviewer=True)

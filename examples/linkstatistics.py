@@ -10,7 +10,7 @@ goal = [0,1.5,1.5,-2,0]
 # normal planning
 manipprob = interfaces.BaseManipulation(robot) # create the interface for basic manipulation programs
 starttime = time.time()
-manipprob.MoveManipulator(goal=goal,execute=False)
+manipprob.MoveManipulator(goal=goal,execute=False,outputtrajobj=True)
 raveLogInfo('non-linkstatistics planning time: %fs'%(time.time()-starttime))
 
 # using link statistics
@@ -25,6 +25,6 @@ traj=manipprob.MoveManipulator(goal=goal,execute=False,outputtrajobj=True)
 raveLogInfo('linkstatistics planning time: %fs'%(time.time()-starttime))
 robot.GetController().SetPath(traj)
 robot.WaitForController(0)
-#while True:
-#	a =1
+while True:
+	a =1
 
