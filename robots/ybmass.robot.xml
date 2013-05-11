@@ -62,38 +62,37 @@
         <Render>models/youbot/arm5.dae 1.0</Render>
 	</Geom>
 </Body>
-<!--GRIPPER-->
 <Body name="palm" type="dynamic">
-    <Geom type="trimesh" modifiable="true">
-      <Translation>0.06 0 0.535</Translation>
-      <data>models/youbot/palm.dae 1.0</data>
-      <Render>models/youbot/palm.dae 1.0</Render>
-    </Geom>
-  </Body>
-  <Body name="leftgripper" type="dynamic">
-    <offsetfrom>link5</offsetfrom>
+        <Translation>0.055 0 0.535</Translation>
+        <rotationaxis>0 0 0 0</rotationaxis>
+       <!--rotationaxis>0 1 0 180</rotationaxis-->
+	<Geom type="trimesh" modifiable="true">
+		<data>models/youbot/palm.dae 1.0</data>
+       		<Render>models/youbot/palm.dae 1.0</Render>
+	</Geom>
+</Body>
+
+<!--Body name="leftgripper" type="dynamic">
+    <offsetfrom>palm</offsetfrom>
     <Geom type="trimesh" modifiable="false">
-      <Translation>0 0.075 0.007</Translation>
-       <rotationaxis>1 0 0 -90</rotationaxis>
+      <Translation>0 0.01 0.02</Translation>
       <data>models/youbot/finger.dae 1.0</data>
       <Render>models/youbot/finger.dae 1.0</Render>
     </Geom>
   </Body>
   <Joint name="jg1" type="slider">
-  <Body>link5</Body>
+  <Body>palm</Body>
   <Body>leftgripper</Body>
   <offsetfrom>leftgripper</offsetfrom>
   <limits>0 .01</limits>
-  <axis>0 0 1</axis>
+  <axis>1 0 0</axis>
   <maxvel>1</maxvel>
   <resolution>0.005</resolution>
   </Joint>
   <Body name="rightgripper" type="dynamic">
-    <offsetfrom>link5</offsetfrom>	
+    <offsetfrom>palm</offsetfrom>	
     <Geom type="trimesh" modifiable="false">
-      <Translation>0 0.075 -0.007</Translation>
-       <rotationaxis>1 0 0 -90</rotationaxis>
-       <rotationaxis>0 1 0 180</rotationaxis>
+      <Translation>0 0 0</Translation>
       <data>models/youbot/finger.dae 1.0</data>
       <Render>models/youbot/finger.dae 1.0</Render>
     </Geom>
@@ -103,13 +102,12 @@
   <Body>rightgripper</Body>
   <offsetfrom>rightgripper</offsetfrom>
   <limits>0 .01</limits>
-  <axis>0 0 -1</axis>
+  <axis>-1 0 0</axis>
   <maxvel>1</maxvel>
   <resolution>0.005</resolution>
-  </Joint>
+  </Joint-->
 
-
-<Joint name="dummy" type="hinge" enable="false">
+<Joint name="dummy" type="hinge">
 	<Body>root</Body>
 	<Body>base</Body>
 	<limitsdeg>0 0</limitsdeg>
@@ -119,13 +117,14 @@
      <body>palm</body>
      <limits>0 0</limits>
 </joint>
+
 <Joint name="j0" type="hinge">
 	<Body>base</Body>
 	<Body>link1</Body>
 	<offsetfrom>link1</offsetfrom>
         <anchor>0 0 0</anchor>
 	<axis>0 1 0</axis>
-	<limitsdeg>-160 160</limitsdeg>
+	<limitsdeg>-170 170</limitsdeg>
 	<maxvel>3</maxvel>
 	<resolution>1</resolution>
 </Joint>
@@ -135,7 +134,7 @@
 	<offsetfrom>link1</offsetfrom>
 	<Anchor>0.04  0.02 0</Anchor>
 	<axis>0 0 1</axis>
-	<limitsdeg>-45 70</limitsdeg>
+	<limitsdeg>-65 90</limitsdeg>
 	<maxvel>3</maxvel>
 	<resolution>1</resolution>
 </Joint>
@@ -146,7 +145,7 @@
 	<!--Anchor>0.01  0.09 0</Anchor-->
     <Anchor>0  0.08 0</Anchor>
 	<axis>0 0 1</axis>
-	<limitsdeg>-80 80</limitsdeg>
+	<limitsdeg>-100 100</limitsdeg>
 	<maxvel>3</maxvel>
 	<resolution>1</resolution>
 </Joint>
@@ -156,7 +155,7 @@
 	<offsetfrom>link3</offsetfrom>
 	<Anchor>0 0.06 0</Anchor>
 	<axis>0 0 1</axis>
-	<limitsdeg>-100 100</limitsdeg>
+	<limitsdeg>-150 150</limitsdeg>
 	<maxvel>3</maxvel>
 	<resolution>1</resolution>
 </Joint>
@@ -166,28 +165,20 @@
 	<offsetfrom>link4</offsetfrom>
 	<Anchor>0 0 -0.01</Anchor>
 	<axis>0 1 0</axis>
-	<limitsdeg>-135 135</limitsdeg>
+	<limitsdeg>-165 165</limitsdeg>
 	<maxvel>3</maxvel>
 	<resolution>1</resolution>
 </Joint>
-<adjacent>base link2</adjacent>
-<adjacent>link3 link4</adjacent> 
-<adjacent>link2 link3</adjacent> 
-<adjacent>link2 link1</adjacent>
-<adjacent>link4 link5</adjacent>
-<adjacent>link5 palm</adjacent>  
-<adjacent>base link2 link1 link3 link4 link5 palm leftgripper rightgripper</adjacent>
+
+
 </KinBody>
 
 <Manipulator name="arm">
-    <Translation>0 0.08 0</Translation>
-     <!--rotationaxis>0 1 0 90</rotationaxis-->
-    <joints>jg1 jg2</joints>
-    <closingdirection>-1 -1</closingdirection>
-    <direction>1 0 0</direction>
-    <effector>link5</effector>
-
-    <base>root</base>
+        <Translation>0 0.075 0</Translation>
+         <!--rotationaxis>1 0 0 -90</rotationaxis-->
+	<effector>link5</effector>
+        
+	<base>root</base>
          
 </Manipulator>
 

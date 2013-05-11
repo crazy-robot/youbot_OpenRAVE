@@ -48,7 +48,7 @@ x = raw_input("What else ? \n")
 print "You want me to \n" +x
 time.sleep(3)
 with env:
- if x == "2":
+if x == "2":
 	with robot:
 		print "Retrieving Semantics of type of unlatching"
 		time.sleep(3)

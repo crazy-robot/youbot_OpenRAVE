@@ -46,19 +46,19 @@ def main(env,options):
         basemanip = interfaces.BaseManipulation(robot)
         taskmanip = interfaces.TaskManipulation(robot)
         #robot.SetJointValues([-0.97],ikmodel.manip.GetGripperIndices())
-        Tstart = array([[ -1,  0,  0,   2.00000000e-01], [  0,0,   1, 6.30000000e-01], [  0,   1  , 0,   5.50000000e-02], [  0,0,0,1]])
-        sol = ikmodel.manip.FindIKSolution(Tstart,IkFilterOptions.CheckEnvCollisions)
-        robot.SetDOFValues(sol,ikmodel.manip.GetArmIndices())
+        #Tstart = array([[ -1,  0,  0,   2.00000000e-01], [  0,0,   1, 6.30000000e-01], [  0,   1  , 0,   5.50000000e-02], [  0,0,0,1]])
+        #sol = ikmodel.manip.FindIKSolution(Tstart,IkFilterOptions.CheckEnvCollisions)
+        #robot.SetDOFValues(sol,ikmodel.manip.GetArmIndices())
     #basemanip.MoveToHandPosition([Tstart],maxiter=1000,maxtries=1,seedik=4)
     #robot.WaitForController(0)
-
+    '''
     if len(ikmodel.manip.GetGripperIndices()) > 0:
         taskmanip.CloseFingers()
         robot.WaitForController(0)
         with env:
             target = env.GetKinBody('cylinder_green_3')
             robot.Grab(target)
-
+     '''
     updir = array((0,0,1))
     success = basemanip.MoveHandStraight(direction=updir,stepsize=0.01,minsteps=1,maxsteps=40)
     robot.WaitForController(0)
@@ -66,9 +66,9 @@ def main(env,options):
     robot.WaitForController(0)
 
     # test verification with offset (should succeed)
-    T = ikmodel.manip.GetTransform()
-    T[1,3] += 0.1
-    success = basemanip.MoveHandStraight(direction=updir,starteematrix=T,stepsize=0.01,minsteps=1,maxsteps=20)
+    #T = ikmodel.manip.GetTransform()
+    #T[1,3] += 0.1
+    #success = basemanip.MoveHandStraight(direction=updir,starteematrix=T,stepsize=0.01,minsteps=1,maxsteps=20)
     robot.WaitForController(0)
 
     print 'checking for existance of trajectories with random queries of moving in a straight line'
@@ -115,7 +115,7 @@ def run(args=None):
     parser = OptionParser(description='Shows how choose IK solutions so that move hand straight can move without discontinuities.')
     OpenRAVEGlobalArguments.addOptions(parser)
     parser.add_option('--scene',
-                      action="store",type='string',dest='scene',default='data/puma_tabletop.env.xml',
+                      action="store",type='string',dest='scene',default='../robots/youbot_6D.robot.xml',
                       help='Scene file to load (default=%default)')
     parser.add_option('--manipname',
                       action="store",type='string',dest='manipname',default=None,

@@ -3,21 +3,35 @@
 <Body name="root">
 
 </Body>
-<Body name="base" type="dynamic">
-	<Translation>0.03 0 -0.127</Translation>
-        <rotationaxis>0 0 1 -90</rotationaxis>
+<Body name="base" type="static">
+	<Translation>0 0 0</Translation>
+        <rotationaxis>1 0 0 90</rotationaxis>
+        <Mass>
+		<Total>0.961</Total>
+		<Inertia>
+			0.01 0    0
+			0    0.01 0
+			0    0    0.01
+		</Inertia>
+		<Com>0 0 0</Com>
+	</Mass>
        <Geom type="trimesh" modifiable="true">
-                <data>models/youbot/youBotBase.iv 1.0</data>
-		<Render>models/youbot/youBotBase.iv 1.0</Render>
-		<!--data>models/youbot/arm0.dae 1.0</data>
-		<Render>models/youbot/arm0.dae 1.0</Render-->
+                <data>models/youbot/arm0.dae 1.0</data>
+		<Render>models/youbot/arm0.dae 1.0</Render>
 	</Geom>
 </Body>
 <Body name="link1" type="dynamic">
         <Translation>0.024 0.0 0.096</Translation>
         <rotationaxis>1 0 0 90</rotationaxis>
-        <!--rotationaxis>0 1 0 180 </rotationaxis-->
-       <!--rotationmat>-0.98480775 -0.17364818 0 0.17364818 -0.98480775 0 0 0 1</rotationmat-->
+        <Mass>
+		<Total>1.155</Total>
+		<Inertia>
+			0.01 0    0
+			0    0.01 0
+			0    0    0.01
+		</Inertia>
+		<Com>0 0 0</Com>
+	</Mass>
 	<Geom type="trimesh" modifiable="true">
 		<data>models/youbot/arm1.dae 1.0</data>
                 <Render>models/youbot/arm1.dae 1.0</Render>
@@ -27,7 +41,15 @@
         <!--Translation>0 0.033 0.1945</Translation-->
        <Translation>0.06 -0.033 0.1945</Translation>
         <rotationaxis>1 0 0 90</rotationaxis>
-       <!--rotationaxis>0 1 0 180</rotationaxis-->
+       <Mass>
+		<Total>0.934</Total>
+		<Inertia>
+			0.01 0    0
+			0    0.01 0
+			0    0    0.01
+		</Inertia>
+		<Com>0 0 0</Com>
+	</Mass>>
 	<Geom type="trimesh" modifiable="true">
 		<data>models/youbot/arm2.dae 1.0</data>
                 <Render>models/youbot/arm2.dae 1.0</Render>
@@ -37,7 +59,15 @@
         <!--Translation>0 -0.0275 0.35</Translation-->
         <Translation>0.06 0.0275 0.35</Translation>
         <rotationaxis>1 0 0 90</rotationaxis>
-        <!--rotationaxis>0 1 0 180</rotationaxis-->
+        <Mass>
+		<Total>0.877</Total>
+		<Inertia>
+			0.01 0    0
+			0    0.01 0
+			0    0    0.01
+		</Inertia>
+		<Com>0 0 0</Com>
+	</Mass>
 	<Geom type="trimesh" modifiable="true">
 		<data>models/youbot/arm3.dae 1.0</data>
 		<Render>models/youbot/arm3.dae 1.0</Render>
@@ -47,7 +77,15 @@
         <!--Translation>0 0 0.44</Translation-->
          <Translation>0.06 -0.01 0.44</Translation>
          <rotationaxis>1 0 0 90</rotationaxis>       
-	<!--rotationaxis>0 1 0 180</rotationaxis-->
+	<Mass>
+		<Total>0.845</Total>
+		<Inertia>
+			0.01 0    0
+			0    0.01 0
+			0    0    0.01
+		</Inertia>
+		<Com>0 0 0</Com>
+	</Mass>
 	<Geom type="trimesh" modifiable="true">
 		<data>models/youbot/arm4.dae 1.0</data>
                 <Render>models/youbot/arm4.dae 1.0</Render>
@@ -56,76 +94,35 @@
 <Body name="link5" type="dynamic">
         <Translation>0.06 0 0.505</Translation>
        <rotationaxis>1 0 0 90</rotationaxis>
-       <!--rotationaxis>0 1 0 180</rotationaxis-->
+      <Mass>
+		<Total>0.251</Total>
+		<Inertia>
+			0.01 0    0
+			0    0.01 0
+			0    0    0.01
+		</Inertia>
+		<Com>0 0 0</Com>
+	</Mass>
 	<Geom type="trimesh" modifiable="true">
 		<data>models/youbot/arm5.dae 1.0</data>
         <Render>models/youbot/arm5.dae 1.0</Render>
 	</Geom>
 </Body>
 <!--GRIPPER-->
-<Body name="palm" type="dynamic">
-    <Geom type="trimesh" modifiable="true">
-      <Translation>0.06 0 0.535</Translation>
-      <data>models/youbot/palm.dae 1.0</data>
-      <Render>models/youbot/palm.dae 1.0</Render>
-    </Geom>
-  </Body>
-  <Body name="leftgripper" type="dynamic">
-    <offsetfrom>link5</offsetfrom>
-    <Geom type="trimesh" modifiable="false">
-      <Translation>0 0.075 0.007</Translation>
-       <rotationaxis>1 0 0 -90</rotationaxis>
-      <data>models/youbot/finger.dae 1.0</data>
-      <Render>models/youbot/finger.dae 1.0</Render>
-    </Geom>
-  </Body>
-  <Joint name="jg1" type="slider">
-  <Body>link5</Body>
-  <Body>leftgripper</Body>
-  <offsetfrom>leftgripper</offsetfrom>
-  <limits>0 .01</limits>
-  <axis>0 0 1</axis>
-  <maxvel>1</maxvel>
-  <resolution>0.005</resolution>
-  </Joint>
-  <Body name="rightgripper" type="dynamic">
-    <offsetfrom>link5</offsetfrom>	
-    <Geom type="trimesh" modifiable="false">
-      <Translation>0 0.075 -0.007</Translation>
-       <rotationaxis>1 0 0 -90</rotationaxis>
-       <rotationaxis>0 1 0 180</rotationaxis>
-      <data>models/youbot/finger.dae 1.0</data>
-      <Render>models/youbot/finger.dae 1.0</Render>
-    </Geom>
-  </Body>
- <Joint name="jg2" type="slider">
-  <Body>link5</Body>
-  <Body>rightgripper</Body>
-  <offsetfrom>rightgripper</offsetfrom>
-  <limits>0 .01</limits>
-  <axis>0 0 -1</axis>
-  <maxvel>1</maxvel>
-  <resolution>0.005</resolution>
-  </Joint>
-
 
 <Joint name="dummy" type="hinge" enable="false">
 	<Body>root</Body>
 	<Body>base</Body>
 	<limitsdeg>0 0</limitsdeg>
 </Joint>
-<joint name="dummyhand" type="hinge" enable="false">
-     <body>link5</body>
-     <body>palm</body>
-     <limits>0 0</limits>
-</joint>
+
 <Joint name="j0" type="hinge">
 	<Body>base</Body>
 	<Body>link1</Body>
 	<offsetfrom>link1</offsetfrom>
         <anchor>0 0 0</anchor>
 	<axis>0 1 0</axis>
-	<limitsdeg>-160 160</limitsdeg>
+	<limitsdeg>0.001 5.89821287174</limitsdeg>
 	<maxvel>3</maxvel>
 	<resolution>1</resolution>
 </Joint>
@@ -135,7 +132,7 @@
 	<offsetfrom>link1</offsetfrom>
 	<Anchor>0.04  0.02 0</Anchor>
 	<axis>0 0 1</axis>
-	<limitsdeg>-45 70</limitsdeg>
+	<limitsdeg>-65 90</limitsdeg>
 	<maxvel>3</maxvel>
 	<resolution>1</resolution>
 </Joint>
@@ -144,9 +141,9 @@
 	<Body>link2</Body>
 	<offsetfrom>link2</offsetfrom>
 	<!--Anchor>0.01  0.09 0</Anchor-->
-    <Anchor>0  0.08 0</Anchor>
+        <Anchor>0  0.08 0</Anchor>
 	<axis>0 0 1</axis>
-	<limitsdeg>-80 80</limitsdeg>
+	<limitsdeg>-100 100</limitsdeg>
 	<maxvel>3</maxvel>
 	<resolution>1</resolution>
 </Joint>
@@ -156,7 +153,7 @@
 	<offsetfrom>link3</offsetfrom>
 	<Anchor>0 0.06 0</Anchor>
 	<axis>0 0 1</axis>
-	<limitsdeg>-100 100</limitsdeg>
+	<limitsdeg>-150 150</limitsdeg>
 	<maxvel>3</maxvel>
 	<resolution>1</resolution>
 </Joint>
@@ -166,7 +163,7 @@
 	<offsetfrom>link4</offsetfrom>
 	<Anchor>0 0 -0.01</Anchor>
 	<axis>0 1 0</axis>
-	<limitsdeg>-135 135</limitsdeg>
+	<limitsdeg>-165 165</limitsdeg>
 	<maxvel>3</maxvel>
 	<resolution>1</resolution>
 </Joint>

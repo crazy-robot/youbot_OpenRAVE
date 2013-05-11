@@ -1,0 +1,89 @@
+<Robot>
+<KinBody name="youBot">
+<Body name="root">
+</Body>
+<Body name="base" type="static">
+	<Translation>0 0 0</Translation>
+        <rotationaxis>1 0 0 90</rotationaxis>
+        <Mass>
+		<Total>0.961</Total>
+		<Inertia>
+			0.01 0    0
+			0    0.01 0
+			0    0    0.01
+		</Inertia>
+		<Com>0 0 0</Com>
+	</Mass>
+       <Geom type="trimesh" modifiable="true">
+                <data>models/youbot/arm0.dae 1.0</data>
+		<Render>models/youbot/arm0.dae 1.0</Render>
+	</Geom>
+</Body>
+<Joint name="dummy" type="hinge">
+	<Body>root</Body>
+	<Body>base</Body>
+	<limitsdeg>0 0</limitsdeg>
+</Joint>
+
+
+<Body name="link1" type="dynamic">
+        <Translation>0.024 0.0 0.096</Translation>
+        <rotationaxis>1 0 0 90</rotationaxis>
+        <Mass>
+		<Total>1.390</Total>
+		<Inertia>
+			0.0029525 0    0
+			0    0.0060091 0
+			0    0         0.0058821
+		</Inertia>
+		<Com>0 0 0</Com>
+	</Mass>
+	<Geom type="trimesh" modifiable="true">
+		<data>models/youbot/arm1.dae 1.0</data>
+                <Render>models/youbot/arm1.dae 1.0</Render>
+	</Geom>
+</Body>
+<Joint name="j0" type="hinge">
+	<Body>base</Body>
+	<Body>link1</Body>
+	<offsetfrom>link1</offsetfrom>
+        <anchor>0 0 0</anchor>
+	<axis>0 1 0</axis>
+	<limitsdeg>-165 165</limitsdeg>
+	<maxvel>3</maxvel>
+	<resolution>1</resolution>
+</Joint>
+
+
+
+<Body name="link2" type="dynamic">
+        <Translation>0.06 -0.033 0.1945</Translation>
+        <rotationaxis>1 0 0 90</rotationaxis>
+        <Mass>
+		<Total>1.318</Total>
+		<Inertia>
+			0.0031145 0    0
+			0    0.0005843 0
+			0    0         0.0031631
+		</Inertia>
+		<Com>0 0 0</Com>
+	</Mass>
+	<Geom type="trimesh" modifiable="true">
+		<data>models/youbot/arm2.dae 1.0</data>
+                <Render>models/youbot/arm2.dae 1.0</Render>
+	</Geom>
+</Body>
+
+<Joint name="j1" type="hinge">
+	<Body>link2</Body>
+	<Body>link1</Body>
+	<offsetfrom>link1</offsetfrom>
+	<Anchor>0.04  0.02 0</Anchor>
+	<axis>0 0 1</axis>
+	<limitsdeg>-65 90</limitsdeg>
+	<maxvel>3</maxvel>
+	<resolution>1</resolution>
+</Joint>
+
+</KinBody>
+</Robot>
