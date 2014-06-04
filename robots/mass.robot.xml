@@ -3,7 +3,7 @@
 <Body name="root">
 
 </Body>
-<Body name="base" type="static">
+<Body name="base" type="dynamic">
 	<Translation>0 0 0</Translation>
         <rotationaxis>1 0 0 90</rotationaxis>
         <Mass>
